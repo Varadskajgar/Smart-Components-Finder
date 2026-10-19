@@ -139,3 +139,11 @@ body{background:#0b0b0c;color:var(--copy);font-size:14px;letter-spacing:-.01em}.
 components.forEach(part=>{if(!part.icon)part.icon='⌘'});
 renderCatalog();
 </script>
+
+<script id="repair-missing-component-icons">
+document.querySelectorAll('.component').forEach(card=>{const icon=card.querySelector('.component-icon');if(icon&&icon.textContent.trim()==='undefined')icon.textContent='⌘'});
+</script>
+
+<script id="keep-component-icons-readable">
+new MutationObserver(()=>document.querySelectorAll('.component-icon').forEach(icon=>{if(icon.textContent.trim()==='undefined')icon.textContent='⌘'})).observe(document.querySelector('#component-grid'),{childList:true,subtree:true,characterData:true});
+</script>
