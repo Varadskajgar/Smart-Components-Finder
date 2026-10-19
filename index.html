@@ -104,3 +104,7 @@ body{background:#0b0b0c;color:#f4f4f5;line-height:1.55}.sidebar{width:244px;padd
 @media(max-width:760px){.component{min-height:212px}.component .category-tag{margin-top:10px}.card-actions{padding-top:10px}.add-btn,.buy-btn,.info-btn{min-height:36px}.panel-head h2{font-size:19px}.cart-open{min-height:36px}}
 @media(max-width:420px){.component{min-height:0}.card-actions{display:grid;grid-template-columns:1fr 1fr}.card-actions .add-btn{grid-column:1/-1}.hero h1{max-width:100%}.details-actions{flex-direction:column}}
 </style>
+
+<script>
+(()=>{const button=document.querySelector('#open-cart');button?.setAttribute('aria-label','Open shopping basket');const originalToast=showToast;showToast=message=>originalToast(message==='Added to your parts list'?'Added to basket':message);const originalCart=renderCart;renderCart=()=>{originalCart();const empty=document.querySelector('.cart-empty');if(empty)empty.innerHTML='Your basket is empty.<br>Add components from the catalog.'};renderCart()})();
+</script>
