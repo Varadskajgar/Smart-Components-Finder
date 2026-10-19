@@ -4,11 +4,11 @@ A responsive electronic component inventory built with plain HTML, CSS and JavaS
 
 ## Run locally
 
-Open [index.html](index.html) in a browser, or run `python -m http.server 8000` from the repository folder and visit http://localhost:8000.
+Open [index.html](index.html) in a browser, or run `python -m http.server 8000` from the repository folder and visit http://localhost:8000.
 
 ## Edit the example inventory
 
-Edit the `items` array near the bottom of `index.html` to change names, categories, example quantities, container numbers and storage locations. All quantities currently shown are sample data.
+Edit the `items` array near the bottom of `index.html` to change names, categories, example quantities, container numbers and storage locations. All quantities shown are sample data.
 
 ## Included features
 
