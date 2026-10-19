@@ -1,0 +1,14 @@
+{
+  "_comment": "Placeholder mapping only. No RFID reader or ESP32 is connected to the website.",
+  "integrationStatus": "planned",
+  "reader": { "board": "ESP32 development board", "module": "RC522 RFID reader", "communication": "not implemented" },
+  "containerTags": [
+    { "containerId": 1, "rfidUid": null, "label": "Container 1" },
+    { "containerId": 2, "rfidUid": null, "label": "Container 2" }
+  ],
+  "notes": [
+    "Replace null with the UID of the card or key fob assigned to each container.",
+    "A backend or ESP32 bridge will be needed for live identification and updates.",
+    "Never store Wi-Fi passwords or other credentials in this public static site."
+  ]
+}
