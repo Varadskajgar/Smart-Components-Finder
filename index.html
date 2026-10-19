@@ -1,1 +1,94 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Components Finder</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b1220;color:#edf4ff;font-family:Arial,sans-serif}
+header{padding:28px 7%;background:#14243a;border-bottom:1px solid #30445e}
+header h1{color:#63e6e2;margin:0}
+header p{color:#b5c4d8}
+main{max-width:1050px;margin:auto;padding:28px 18px}
+h2{font-size:30px}
+input,select{padding:13px;margin:5px 3px 15px 0;border-radius:8px;border:1px solid #40536c;background:#15243a;color:white}
+input{width:min(100%,400px)}
+#parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.card{background:#14243a;border:1px solid #30445e;padding:18px;border-radius:13px}
+.card h3{color:#63e6e2}
+.card p{color:#c2cede}
+button{padding:10px 14px;border:0;border-radius:7px;background:#63e6e2;color:#081522;font-weight:bold;cursor:pointer}
+a{color:#63e6e2}
+.note{margin-top:25px;padding:15px;border:1px solid #40536c;border-radius:10px;color:#b5c4d8}
+</style>
+</head>
+<body>
+<header>
+<h1>⌕ Smart Components Finder</h1>
+<p>Find components. Locate your box. Build smarter.</p>
+</header>
+<main>
+<h2>Component Inventory</h2>
+<p>Search your components and find their sample storage location.</p>
+
+<input id="search" placeholder="Search resistor, IC, sensor...">
+<select id="box">
+<option value="">All containers</option>
+<option value="1">Container 1</option>
+<option value="2">Container 2</option>
+</select>
+
+<div id="parts"></div>
+
+<h2>Storage Containers</h2>
+<div class="card">
+<h3>Container 1</h3>
+<p>Resistors, capacitors, LEDs and diodes.</p>
+</div>
+<br>
+<div class="card">
+<h3>Container 2</h3>
+<p>ICs, sensors, ESP32 boards and displays.</p>
+</div>
+
+<div class="note">
+<strong>Project status:</strong> This is a website demo using sample inventory.
+Live RFID updates and online inventory management will be connected later.
+</div>
+<p><a href="https://github.com/Varadskajgar/Smart-Components-Finder">View project on GitHub</a></p>
+</main>
+
+<script>
+const items=[
+{name:"Resistor 220Ω",box:1,qty:20},
+{name:"Resistor 10kΩ",box:1,qty:15},
+{name:"Capacitor 100µF",box:1,qty:8},
+{name:"LED 5mm",box:1,qty:10},
+{name:"Diode 1N4007",box:1,qty:5},
+{name:"IC NE555 Timer",box:2,qty:3},
+{name:"ESP32 Development Board",box:2,qty:1},
+{name:"IR Sensor Module",box:2,qty:2},
+{name:"OLED Display",box:2,qty:1}
+];
+
+function render(){
+const q=document.getElementById("search").value.toLowerCase();
+const b=document.getElementById("box").value;
+const found=items.filter(x=>x.name.toLowerCase().includes(q)&&(!b||x.box==b));
+document.getElementById("parts").innerHTML=found.map(x=>`
+<div class="card">
+<h3>${x.name}</h3>
+<p>Storage: Container ${x.box}</p>
+<p>Example quantity: ${x.qty}</p>
+<a href="https://www.google.com/search?tbm=shop&q=${encodeURIComponent(x.name)}" target="_blank" rel="noopener">
+<button>Find supplier</button></a>
+</div>`).join("") || "<p>No matching components found.</p>";
+}
+document.getElementById("search").addEventListener("input",render);
+document.getElementById("box").addEventListener("change",render);
+render();
+</script>
+</body>
+</html>
