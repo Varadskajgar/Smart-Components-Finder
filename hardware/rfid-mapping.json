@@ -1,14 +1,20 @@
 {
-  "_comment": "Placeholder mapping only. No RFID reader or ESP32 is connected to the website.",
-  "integrationStatus": "planned",
-  "reader": { "board": "ESP32 development board", "module": "RC522 RFID reader", "communication": "not implemented" },
+  "_comment": "Hardware firmware uses these blank-until-scanned RFID placeholders. The website is not connected to the ESP32.",
+  "integrationStatus": "standalone-prototype-source-added-hardware-not-tested",
+  "reader": {
+    "board": "ESP32-WROOM-32 30-pin",
+    "module": "RC522",
+    "communication": "SPI",
+    "pins": { "ss": 5, "sck": 18, "mosi": 23, "miso": 19, "rst": 22, "irq": null }
+  },
   "containerTags": [
-    { "containerId": 1, "rfidUid": null, "label": "Container 1" },
-    { "containerId": 2, "rfidUid": null, "label": "Container 2" }
+    { "containerId": 1, "rfidUid": null, "label": "RFID card" },
+    { "containerId": 2, "rfidUid": null, "label": "RFID key fob" }
   ],
   "notes": [
-    "Replace null with the UID of the card or key fob assigned to each container.",
-    "A backend or ESP32 bridge will be needed for live identification and updates.",
-    "Never store Wi-Fi passwords or other credentials in this public static site."
+    "Scan tags with the firmware and copy printed UIDs into the two constants in hardware/SmartComponentsFinder/SmartComponentsFinder.ino.",
+    "RFID verification is disabled for standalone first demo; enable it only after both UIDs are configured and checked.",
+    "The 16 physical LED positions are configurable in the firmware parts table and are not synchronized with the website.",
+    "No live hardware communication or physical test is claimed."
   ]
 }
