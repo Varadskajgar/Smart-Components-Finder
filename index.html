@@ -1,94 +1,32 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Smart Components Finder</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;background:#0b1220;color:#edf4ff;font-family:Arial,sans-serif}
-header{padding:28px 7%;background:#14243a;border-bottom:1px solid #30445e}
-header h1{color:#63e6e2;margin:0}
-header p{color:#b5c4d8}
-main{max-width:1050px;margin:auto;padding:28px 18px}
-h2{font-size:30px}
-input,select{padding:13px;margin:5px 3px 15px 0;border-radius:8px;border:1px solid #40536c;background:#15243a;color:white}
-input{width:min(100%,400px)}
-#parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
-.card{background:#14243a;border:1px solid #30445e;padding:18px;border-radius:13px}
-.card h3{color:#63e6e2}
-.card p{color:#c2cede}
-button{padding:10px 14px;border:0;border-radius:7px;background:#63e6e2;color:#081522;font-weight:bold;cursor:pointer}
-a{color:#63e6e2}
-.note{margin-top:25px;padding:15px;border:1px solid #40536c;border-radius:10px;color:#b5c4d8}
-</style>
-</head>
-<body>
-<header>
-<h1>⌕ Smart Components Finder</h1>
-<p>Find components. Locate your box. Build smarter.</p>
-</header>
-<main>
-<h2>Component Inventory</h2>
-<p>Search your components and find their sample storage location.</p>
-
-<input id="search" placeholder="Search resistor, IC, sensor...">
-<select id="box">
-<option value="">All containers</option>
-<option value="1">Container 1</option>
-<option value="2">Container 2</option>
-</select>
-
-<div id="parts"></div>
-
-<h2>Storage Containers</h2>
-<div class="card">
-<h3>Container 1</h3>
-<p>Resistors, capacitors, LEDs and diodes.</p>
-</div>
-<br>
-<div class="card">
-<h3>Container 2</h3>
-<p>ICs, sensors, ESP32 boards and displays.</p>
-</div>
-
-<div class="note">
-<strong>Project status:</strong> This is a website demo using sample inventory.
-Live RFID updates and online inventory management will be connected later.
-</div>
-<p><a href="https://github.com/Varadskajgar/Smart-Components-Finder">View project on GitHub</a></p>
-</main>
-
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1118"><meta name="description" content="Find electronic components in your storage containers."><title>Smart Components Finder</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{color-scheme:dark;--bg:#0b1118;--panel:#111b24;--line:#24333e;--text:#e6edf2;--muted:#83939f;--cyan:#65e7d1;--violet:#b7a1ff;--amber:#f3c875;--green:#80d9a4}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 'DM Sans',sans-serif}.sidebar{width:230px;position:fixed;inset:0 auto 0 0;background:#0e161e;border-right:1px solid #1f2b34;padding:24px 16px;display:flex;flex-direction:column}.brand{display:flex;gap:11px;align-items:center;padding:0 5px 35px;color:var(--text);text-decoration:none}.mark{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:#18302f;color:var(--cyan);font-size:20px}.brand small{display:block;color:#72828c;font:9px 'DM Mono';letter-spacing:1px}.brand b{font-size:14px}.accent{color:var(--cyan)}.label{font:9px 'DM Mono';letter-spacing:1px;color:#63747f;padding:0 9px 10px}.nav{padding:10px;border-radius:8px;color:#a5b2ba;text-decoration:none}.nav.active{background:#162725;color:var(--cyan)}.nav span{float:right}.bottom{margin-top:auto}.hardware,.profile{display:flex;align-items:center;gap:10px;padding:12px 8px;border:1px solid #26343e;border-radius:9px;margin-bottom:12px;font-size:11px}.hardware small,.profile small{display:block;color:var(--muted);font-size:10px}.dot{margin-left:auto;width:6px;height:6px;border-radius:50%;background:var(--amber)}.avatar{padding:6px;border-radius:7px;background:#25423f;color:var(--cyan)}main{margin-left:230px}.top{height:58px;border-bottom:1px solid #1e2a33;display:flex;align-items:center;justify-content:space-between;padding:0 4.5%;color:var(--muted);font-size:11px}.top strong{color:#d0d9de;font-weight:500}.sample{color:#c7b175;font:9px 'DM Mono';letter-spacing:.7px}.wrap{max-width:1250px;margin:auto;padding:34px 4.5% 25px}.heading{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px}.eyebrow{color:#7c9f99;font:9px 'DM Mono';letter-spacing:1.2px}.heading h1{font-size:27px;letter-spacing:-.8px;margin:5px 0}.muted{color:var(--muted);font-size:12px;margin:0}.repo{border:1px solid #2c3c46;border-radius:7px;padding:8px 10px;color:#bcc8ce;text-decoration:none;font-size:10px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}.stat,.panel,.box{background:var(--panel);border:1px solid var(--line);border-radius:11px}.stat{padding:14px 16px;min-height:104px;color:#a0adb5;font-size:11px}.stat strong{display:block;color:var(--text);font-size:24px;margin-top:8px}.stat small{font-size:9px;color:#75858f}.green{color:var(--green)!important;font-size:14px!important}.panel{overflow:hidden}.panelhead{padding:17px 19px 12px;display:flex;justify-content:space-between;align-items:flex-end}.panel h2,.section h2{font-size:15px;margin:0}.panelhead p,.section p{font-size:10px;color:var(--muted);margin:3px 0 0}.count{font:10px 'DM Mono';color:#8c9ca5}.tools{display:flex;gap:8px;padding:0 19px 12px}.search,select{height:35px;border:1px solid #2b3a44;border-radius:7px;background:#0e171f;color:#b9c6cd;padding:0 10px;font:11px 'DM Sans'}.search{flex:1;max-width:370px;outline:none}.chips{display:flex;gap:6px;padding:0 19px 13px;overflow:auto}.chip{white-space:nowrap;border:1px solid #293842;background:none;color:#9aa8b0;border-radius:6px;padding:5px 9px;font:10px 'DM Sans';cursor:pointer}.chip.active{background:#18302f;border-color:#37655e;color:var(--cyan)}.tablewrap{overflow:auto;border-top:1px solid #222f38}table{width:100%;min-width:740px;border-collapse:collapse}th{text-align:left;background:#101922;color:#6f808a;font:9px 'DM Mono';letter-spacing:.6px;padding:10px}td{border-top:1px solid #1e2b34;padding:10px;font-size:10px;color:#aab6bd}td:first-child,th:first-child{padding-left:19px}.name{color:#e1e8eb;font-weight:600}.detail{color:#71818b;font:9px 'DM Mono'}.badge{background:#1b2932;border-radius:4px;padding:3px 6px}.pill{color:#8cdcca;background:#18302f;border-radius:4px;padding:3px 6px;font:9px 'DM Mono'}.loc{color:#8b9ba4}.supplier{color:#65cdbd;text-decoration:none;white-space:nowrap}.mobile{display:none}.empty{text-align:center;padding:34px;color:#91a1aa}.empty button{color:var(--cyan);background:none;border:0;cursor:pointer}.foot{padding:10px 19px;border-top:1px solid #202d36;display:flex;justify-content:space-between;color:#71818b;font-size:9px}.section{margin-top:26px}.sectionhead{display:flex;justify-content:space-between;align-items:flex-end}.future{font:9px 'DM Mono';color:var(--violet);background:#29243a;border-radius:4px;padding:5px 7px}.boxes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:11px}.box{padding:15px}.box h3{font-size:12px;margin:0}.box p{font-size:10px;color:var(--muted);margin:3px 0}.box .tags{margin:12px 0 8px;display:flex;flex-wrap:wrap;gap:5px}.tags span{font-size:9px;color:#9eabb1;border:1px solid #293741;padding:3px 6px;border-radius:4px}.rfid{font-size:9px;color:#71818b}.footer{margin-top:28px;border-top:1px solid #1d2932;padding-top:12px;display:flex;justify-content:space-between;color:#697a83;font-size:9px}dialog{background:#15212b;color:var(--text);border:1px solid #33444f;border-radius:12px;max-width:380px;padding:22px}dialog::backdrop{background:#04080dcc}dialog p{font-size:12px;color:#a3b0b7;line-height:1.6}.close{float:right;background:none;color:#ccd6dc;border:0;font-size:22px;cursor:pointer}@media(max-width:950px){.sidebar{width:190px}main{margin-left:190px}.stats{grid-template-columns:1fr 1fr}}@media(max-width:680px){.sidebar{position:relative;width:auto;height:auto;padding:11px 15px;display:block;border-right:0;border-bottom:1px solid #1f2b34}.brand{padding:0}.mark{width:32px;height:32px}.label,.nav,.bottom{display:none}main{margin:0}.top{height:45px;padding:0 15px}.wrap{padding:23px 13px}.heading h1{font-size:21px}.repo{font-size:0}.repo:first-letter{font-size:13px}.stats{gap:7px}.stat{padding:11px;min-height:95px}.stat strong{font-size:21px}.panelhead{padding:15px 13px 11px}.tools{padding:0 13px 10px}.chips{padding:0 13px 11px}.tablewrap{display:none}.mobile{display:block;border-top:1px solid #222f38}.item{padding:11px 13px;border-bottom:1px solid #1e2b34}.itemtop{display:flex;justify-content:space-between;gap:6px}.itemmeta{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}.boxes{grid-template-columns:1fr}.foot{padding:9px 13px}.sectionhead{align-items:flex-start}.footer{gap:8px}.footer span:last-child{text-align:right}}@media(max-width:360px){.stats{grid-template-columns:1fr 1fr}select{max-width:112px}}
+</style></head><body>
+<aside class="sidebar"><a class="brand" href="#"><span class="mark">⌘</span><span><b>Component<span class="accent">Finder</span></b><small>PERSONAL INVENTORY</small></span></a><div class="label">WORKSPACE</div><a class="nav active" href="#inventory">▦ &nbsp;Inventory <span id="navcount">13</span></a><a class="nav" href="#containers">▣ &nbsp;Containers <span>02</span></a><div class="bottom"><div class="hardware">⌁ <div><b>Hardware integration</b><small>Planned for later</small></div><i class="dot"></i></div><div class="profile"><span class="avatar">SF</span><span><b>My workshop</b><small>Local sample inventory</small></span></div></div></aside>
+<main><header class="top">Workspace / <strong>Inventory</strong><span class="sample">● &nbsp;SAMPLE DATA <button id="help" aria-label="About" style="margin-left:12px">?</button></span></header><div class="wrap"><section class="heading"><div><div class="eyebrow">YOUR WORKSHOP, IN ONE PLACE</div><h1>Smart Components Finder</h1><p class="muted">Find what you need. Know exactly where to look.</p></div><a class="repo" href="https://github.com/Varadskajgar/Smart-Components-Finder" target="_blank" rel="noopener">↗ &nbsp;Project repository</a></section>
+<section class="stats"><article class="stat">Component types<strong id="types">13</strong><small>Unique items</small></article><article class="stat">Storage containers<strong>02</strong><small>Physical boxes mapped</small></article><article class="stat">Total units<strong id="units">—</strong><small>Example quantities</small></article><article class="stat">Inventory status<strong class="green">● &nbsp;Ready to browse</strong><small>Sample data · local to this project</small></article></section>
+<section class="panel" id="inventory"><div class="panelhead"><div><h2>Component inventory</h2><p>Search and filter your stored parts.</p></div><span class="count" id="count"></span></div><div class="tools"><input class="search" id="search" type="search" placeholder="Search components..." aria-label="Search components"><select id="container"><option value="all">All containers</option><option value="1">Container 1</option><option value="2">Container 2</option></select></div><div class="chips" id="categories"></div><div class="tablewrap"><table><thead><tr><th>COMPONENT</th><th>CATEGORY</th><th>QUANTITY</th><th>CONTAINER</th><th>STORAGE LOCATION</th><th></th></tr></thead><tbody id="rows"></tbody></table></div><div class="mobile" id="cards"></div><div class="empty" id="empty" hidden><div style="font-size:25px">⌕</div><b>No components found</b><p>Try another name, category or container.</p><button id="reset">Clear all filters</button></div><div class="foot"><span>Editable example inventory · sample quantities</span><span id="shown"></span></div></section>
+<section class="section" id="containers"><div class="sectionhead"><div><h2>Your storage containers</h2><p>See what’s assigned to each physical box.</p></div><span class="future">RFID MAPPING · FUTURE</span></div><div class="boxes" id="boxes"></div></section><footer class="footer"><span>Made for the hands-on builder ♥</span><span>Static site · GitHub Pages ready</span></footer></div></main>
+<dialog id="about"><form method="dialog"><button class="close" aria-label="Close">×</button><div class="eyebrow">ABOUT THIS PROJECT</div><h2>Smart Components Finder</h2><p>A lightweight catalog for locating parts in your physical boxes. This version uses example inventory stored in the website code.</p><p>ESP32, RC522 RFID and live updates are planned. No hardware is connected yet.</p><button>Got it</button></form></dialog>
 <script>
+// Example inventory: change quantities and locations here.
 const items=[
-{name:"Resistor 220Ω",box:1,qty:20},
-{name:"Resistor 10kΩ",box:1,qty:15},
-{name:"Capacitor 100µF",box:1,qty:8},
-{name:"LED 5mm",box:1,qty:10},
-{name:"Diode 1N4007",box:1,qty:5},
-{name:"IC NE555 Timer",box:2,qty:3},
-{name:"ESP32 Development Board",box:2,qty:1},
-{name:"IR Sensor Module",box:2,qty:2},
-{name:"OLED Display",box:2,qty:1}
-];
-
-function render(){
-const q=document.getElementById("search").value.toLowerCase();
-const b=document.getElementById("box").value;
-const found=items.filter(x=>x.name.toLowerCase().includes(q)&&(!b||x.box==b));
-document.getElementById("parts").innerHTML=found.map(x=>`
-<div class="card">
-<h3>${x.name}</h3>
-<p>Storage: Container ${x.box}</p>
-<p>Example quantity: ${x.qty}</p>
-<a href="https://www.google.com/search?tbm=shop&q=${encodeURIComponent(x.name)}" target="_blank" rel="noopener">
-<button>Find supplier</button></a>
-</div>`).join("") || "<p>No matching components found.</p>";
-}
-document.getElementById("search").addEventListener("input",render);
-document.getElementById("box").addEventListener("change",render);
-render();
-</script>
-</body>
-</html>
+{id:'r220',name:'220 Ω Resistor',detail:'Through-hole · ¼ W',cat:'Resistors',qty:20,box:1,loc:'Tray A · Slot 01'},
+{id:'r10k',name:'10 kΩ Resistor',detail:'Through-hole · ¼ W',cat:'Resistors',qty:15,box:1,loc:'Tray A · Slot 02'},
+{id:'cap',name:'100 µF Capacitor',detail:'Electrolytic · 25 V',cat:'Capacitors',qty:8,box:1,loc:'Tray A · Slot 03'},
+{id:'led',name:'5 mm LED',detail:'Red · Diffused',cat:'LEDs',qty:10,box:1,loc:'Tray A · Slot 04'},
+{id:'diode',name:'1N4007 Diode',detail:'Rectifier · 1 A',cat:'Diodes',qty:5,box:1,loc:'Tray A · Slot 05'},
+{id:'ne555',name:'NE555 Timer IC',detail:'8-pin DIP',cat:'ICs',qty:3,box:1,loc:'Tray B · Slot 01'},
+{id:'esp32',name:'ESP32 Development Board',detail:'Wi-Fi + Bluetooth',cat:'Development Boards',qty:1,box:2,loc:'Pocket 01'},
+{id:'ir',name:'IR Sensor Module',detail:'Obstacle detection',cat:'Sensors',qty:2,box:2,loc:'Tray A · Slot 01'},
+{id:'oled',name:'0.96-inch OLED Display',detail:'128 × 64 · I²C',cat:'Displays',qty:1,box:2,loc:'Pocket 02'},
+{id:'rc522',name:'RC522 RFID Module',detail:'13.56 MHz reader',cat:'Sensors',qty:1,box:2,loc:'Tray A · Slot 02'},
+{id:'sg90',name:'SG90 Servo Motor',detail:'Micro · 9 g',cat:'Motors',qty:1,box:2,loc:'Pocket 03'},
+{id:'breadboard',name:'Breadboard',detail:'Full-size · 830 tie points',cat:'Prototyping',qty:2,box:2,loc:'Main compartment'},
+{id:'jumpers',name:'Jumper Wires',detail:'Male-to-male · mixed colors',cat:'Prototyping',qty:40,box:2,loc:'Pocket 04'}];
+const bins=[{id:1,name:'Container 1',desc:'Passive parts & ICs'},{id:2,name:'Container 2',desc:'Modules, boards & tools'}];let category='All components';const $=s=>document.querySelector(s);const safe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const cats=['All components',...new Set(items.map(x=>x.cat))];
+function filtered(){let q=$('#search').value.trim().toLowerCase(),b=$('#container').value;return items.filter(x=>(!q||[x.name,x.cat,x.detail,x.loc].join(' ').toLowerCase().includes(q))&&(category==='All components'||x.cat===category)&&(b==='all'||String(x.box)===b))}
+function link(n){return 'https://www.google.com/search?tbm=shop&q='+encodeURIComponent(n)}
+function render(){let a=filtered();$('#count').textContent=a.length+' items';$('#shown').textContent=a.length+' of '+items.length+' shown';$('#empty').hidden=!!a.length;$('.tablewrap').hidden=!a.length;$('#rows').innerHTML=a.map(x=>'<tr><td><span class="name">'+safe(x.name)+'</span><br><span class="detail">'+safe(x.detail)+'</span></td><td><span class="badge">'+safe(x.cat)+'</span></td><td>'+x.qty+' units</td><td><span class="pill">Container '+x.box+'</span></td><td class="loc">'+safe(x.loc)+'</td><td><a class="supplier" target="_blank" rel="noopener noreferrer" href="'+link(x.name)+'">Supplier ↗</a></td></tr>').join('');$('#cards').innerHTML=a.map(x=>'<article class="item"><div class="itemtop"><span><span class="name">'+safe(x.name)+'</span><br><span class="detail">'+safe(x.detail)+'</span></span><a class="supplier" target="_blank" rel="noopener noreferrer" href="'+link(x.name)+'">Supplier ↗</a></div><div class="itemmeta"><span class="badge">'+safe(x.cat)+'</span><span>'+x.qty+' units</span><span class="pill">Container '+x.box+'</span><span class="loc">'+safe(x.loc)+'</span></div></article>').join('')}
+$('#categories').innerHTML=cats.map(c=>'<button class="chip'+(c===category?' active':'')+'" data-cat="'+safe(c)+'" aria-pressed="'+(c===category)+'">'+safe(c)+'</button>').join('');$('#categories').addEventListener('click',e=>{if(e.target.dataset.cat){category=e.target.dataset.cat;$('#categories').innerHTML=cats.map(c=>'<button class="chip'+(c===category?' active':'')+'" data-cat="'+safe(c)+'" aria-pressed="'+(c===category)+'">'+safe(c)+'</button>').join('');render()}});$('#search').addEventListener('input',render);$('#container').addEventListener('change',render);$('#reset').addEventListener('click',()=>{$('#search').value='';$('#container').value='all';category='All components';$('#categories').querySelector('[data-cat="All components"]').click()});$('#help').addEventListener('click',()=>$('#about').showModal());document.addEventListener('keydown',e=>{if(e.key==='/'&&!['INPUT','SELECT'].includes(document.activeElement.tagName)){e.preventDefault();$('#search').focus()}});$('#types').textContent=items.length;$('#navcount').textContent=items.length;$('#units').textContent=items.reduce((s,x)=>s+x.qty,0).toLocaleString();$('#boxes').innerHTML=bins.map(b=>{let a=items.filter(x=>x.box===b.id),cs=[...new Set(a.map(x=>x.cat))];return'<article class="box"><h3>▣ &nbsp;'+b.name+' <span style="float:right;color:#91a2ac;font:10px DM Mono">'+a.length+' types</span></h3><p>'+b.desc+'</p><div class="tags">'+cs.map(c=>'<span>'+safe(c)+'</span>').join('')+'</div><div class="rfid">RFID identifier unassigned · future integration</div></article>'}).join('');render();
+</script></body></html>
